@@ -1,0 +1,5804 @@
+{
+  "source_workbook": "Book1_ARKO_C32-C34_Filled.xlsx",
+  "sheet": "Global",
+  "scope": "Read-only forensic input and dependency map; source values are not new-deal defaults",
+  "curated_fields": [
+    {
+      "id": "dealer_growth_sites",
+      "cells": [
+        "C4"
+      ],
+      "label": "Incremental new dealer sites each year",
+      "unit": "sites/year",
+      "required_evidence": "Documented incremental customer pipeline",
+      "what_it_shows": "D4 annual gallons; F4 new cohort annual contribution; J4:R4 cumulative contribution; H4 growth capital per cohort",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Not acquired site count; first benefit appears in Year 2",
+      "existing_cells": {
+        "C4": {
+          "value": 30.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "D4"
+          ]
+        }
+      }
+    },
+    {
+      "id": "dealer_growth_monthly_volume",
+      "cells": [
+        "D4"
+      ],
+      "label": "Monthly gallons per incremental dealer site",
+      "unit": "gallons/site/month",
+      "required_evidence": "Actual site throughput",
+      "what_it_shows": "Current literal 80000 times C4 times 12",
+      "entry_rule": "new explicit assumption instead of formula literal",
+      "warning": "Embedded in formula; expose separately",
+      "existing_cells": {
+        "D4": {
+          "value": 28800000.0,
+          "formula": "80000*C4*12",
+          "formula_attributes": {},
+          "type": null,
+          "style": 3,
+          "precedents": [
+            "C4"
+          ],
+          "direct_dependents": [
+            "F4",
+            "D9"
+          ]
+        }
+      }
+    },
+    {
+      "id": "dealer_growth_net_cpg",
+      "cells": [
+        "E4"
+      ],
+      "label": "Net contribution from incremental dealer volume",
+      "unit": "cents/gallon",
+      "required_evidence": "Net supply margin after marginal operating costs",
+      "what_it_shows": "F4=D4*E4/100",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Zero cpg triggers division-by-zero in terminal Years 3\u201310",
+      "existing_cells": {
+        "E4": {
+          "value": 10.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "F4",
+            "K9",
+            "L9",
+            "M9",
+            "N9",
+            "O9",
+            "P9",
+            "Q9",
+            "R9"
+          ]
+        }
+      }
+    },
+    {
+      "id": "dealer_growth_yield",
+      "cells": [
+        "G4"
+      ],
+      "label": "Assumed annual EBITDA/capital yield",
+      "unit": "decimal annual yield",
+      "required_evidence": "Independently priced capital and contribution",
+      "what_it_shows": "H4=F4/G4",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Not IRR; capital is backsolved, not estimated from a project budget",
+      "existing_cells": {
+        "G4": {
+          "value": 0.3,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "H4"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wholesale_growth_customers",
+      "cells": [
+        "C5"
+      ],
+      "label": "New wholesale customers",
+      "unit": "customer count",
+      "required_evidence": "Verified pipeline and customer setup cost",
+      "what_it_shows": "H5=C5*100000",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Current literal setup cost is $100000/customer",
+      "existing_cells": {
+        "C5": {
+          "value": 2.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "H5"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wholesale_growth_volume",
+      "cells": [
+        "D5"
+      ],
+      "label": "Incremental new wholesale annual volume",
+      "unit": "gallons/year",
+      "required_evidence": "Contracts or vetted pipeline",
+      "what_it_shows": "F5=D5*E5/100; Year 1 half benefit, Year 2 onward full",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "",
+      "existing_cells": {
+        "D5": {
+          "value": 30000000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "F5",
+            "D9"
+          ]
+        }
+      }
+    },
+    {
+      "id": "wholesale_growth_cpg",
+      "cells": [
+        "E5"
+      ],
+      "label": "Incremental wholesale net contribution",
+      "unit": "cents/gallon",
+      "required_evidence": "Rack/product/freight economics",
+      "what_it_shows": "F5 annual contribution",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Zero cpg triggers division-by-zero in terminal Years 3\u201310",
+      "existing_cells": {
+        "E5": {
+          "value": 1.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "F5",
+            "K9",
+            "L9",
+            "M9",
+            "N9",
+            "O9",
+            "P9",
+            "Q9",
+            "R9"
+          ]
+        }
+      }
+    },
+    {
+      "id": "unbranded_growth_customers",
+      "cells": [
+        "C6"
+      ],
+      "label": "Incremental new unbranded customers",
+      "unit": "customer count",
+      "required_evidence": "Verified customer pipeline",
+      "what_it_shows": "Nothing: disconnected",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Currently no dependent formulas",
+      "existing_cells": {
+        "C6": {
+          "value": 10.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        }
+      }
+    },
+    {
+      "id": "unbranded_growth_volume",
+      "cells": [
+        "D6"
+      ],
+      "label": "Incremental unbranded annual gallons",
+      "unit": "gallons/year",
+      "required_evidence": "Contracts or vetted pipeline",
+      "what_it_shows": "F6 contribution and H6 working capital",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "",
+      "existing_cells": {
+        "D6": {
+          "value": 50000000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "F6",
+            "H6",
+            "D9"
+          ]
+        }
+      }
+    },
+    {
+      "id": "unbranded_growth_cpg",
+      "cells": [
+        "E6"
+      ],
+      "label": "Incremental unbranded margin",
+      "unit": "cents/gallon",
+      "required_evidence": "Net margin economics",
+      "what_it_shows": "F6 contribution; G6 simple return",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Zero cpg triggers division-by-zero in terminal Years 3\u201310",
+      "existing_cells": {
+        "E6": {
+          "value": 5.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "F6",
+            "K9",
+            "L9",
+            "M9",
+            "N9",
+            "O9",
+            "P9",
+            "Q9",
+            "R9"
+          ]
+        }
+      }
+    },
+    {
+      "id": "unbranded_working_capital",
+      "cells": [
+        "H6"
+      ],
+      "label": "Working capital assumptions",
+      "unit": "days and dollars/gallon",
+      "required_evidence": "Receivable/inventory/payable days and product cost",
+      "what_it_shows": "H6=D6/365*10*4; deployed Year 1, recovered Year 10",
+      "entry_rule": "new explicit drivers instead of embedded literals",
+      "warning": "10 days and $4/gallon are literals; full recovery is assumed",
+      "existing_cells": {
+        "H6": {
+          "value": 5479452.05479452,
+          "formula": "D6/365*10*4",
+          "formula_attributes": {},
+          "type": null,
+          "style": 3,
+          "precedents": [
+            "D6"
+          ],
+          "direct_dependents": [
+            "G6",
+            "T6",
+            "AC6"
+          ]
+        }
+      }
+    },
+    {
+      "id": "terminal_eligibility",
+      "cells": [
+        "C9"
+      ],
+      "label": "Growth volume eligible for owned terminal benefit",
+      "unit": "fraction 0\u20131",
+      "required_evidence": "Rack mapping, capacity, contracts",
+      "what_it_shows": "F9 and J9 apply eligibility",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "K9:R9 omit this fraction",
+      "existing_cells": {
+        "C9": {
+          "value": 0.75,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "F9"
+          ]
+        }
+      }
+    },
+    {
+      "id": "terminal_margin",
+      "cells": [
+        "E9"
+      ],
+      "label": "Incremental net terminal contribution",
+      "unit": "cents/gallon",
+      "required_evidence": "Incremental throughput fees less variable expense",
+      "what_it_shows": "F9 and I9:R9 terminal benefit",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Ensure supply margin does not already include this",
+      "existing_cells": {
+        "E9": {
+          "value": 1.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "F9",
+            "K9",
+            "L9",
+            "M9",
+            "N9",
+            "O9",
+            "P9",
+            "Q9",
+            "R9"
+          ]
+        }
+      }
+    },
+    {
+      "id": "shifted_terminal_volumes",
+      "cells": [
+        "C10",
+        "D10",
+        "E10",
+        "C11",
+        "D11",
+        "E11"
+      ],
+      "label": "Shifted buyer and target terminal volumes",
+      "unit": "fraction, gallons/year, cents/gallon",
+      "required_evidence": "Supply team volume movement and terminal cost analysis",
+      "what_it_shows": "No benefit formulas currently exist for these rows",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Row 13 note says shifted-barrel benefits already included; must allocate before adding",
+      "existing_cells": {
+        "C10": {
+          "value": 1.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D10": {},
+        "E10": {
+          "value": 1.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "C11": {
+          "value": 1.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D11": {},
+        "E11": {
+          "value": 1.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        }
+      }
+    },
+    {
+      "id": "supply_synergy",
+      "cells": [
+        "F13"
+      ],
+      "label": "Distinct net supply synergy",
+      "unit": "dollars/year",
+      "required_evidence": "Contract/rack/freight/loss-rate comparison and action plan",
+      "what_it_shows": "Year 1 half, Year 2 onward full",
+      "entry_rule": "replace embedded hardcoded assumption with sourced calculation",
+      "warning": "Current =18000000+2000000 is legacy placeholder; exclude terminal/optimization overlap",
+      "existing_cells": {
+        "F13": {
+          "value": 20000000.0,
+          "formula": "18000000+2000000",
+          "formula_attributes": {},
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "I13",
+            "J13"
+          ]
+        }
+      }
+    },
+    {
+      "id": "g_and_a_base",
+      "cells": [
+        "F85",
+        "D15"
+      ],
+      "label": "Eligible normalized G&A base",
+      "unit": "dollars/year",
+      "required_evidence": "Current target G&A ledger and normalization",
+      "what_it_shows": "D15=F85; F15=D15*(1-C15)",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "F85=129000000*2 is an embedded old half-year amount",
+      "existing_cells": {
+        "F85": {
+          "value": 258000000.0,
+          "formula": "129000000*2",
+          "formula_attributes": {},
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "D15",
+            "F90"
+          ]
+        },
+        "D15": {
+          "value": 258000000.0,
+          "formula": "F85",
+          "formula_attributes": {},
+          "type": null,
+          "style": 2,
+          "precedents": [
+            "F85"
+          ],
+          "direct_dependents": [
+            "F15"
+          ]
+        }
+      }
+    },
+    {
+      "id": "g_and_a_retained",
+      "cells": [
+        "C15"
+      ],
+      "label": "Share of eligible G&A retained",
+      "unit": "fraction 0\u20131",
+      "required_evidence": "Function-by-function costs eliminated, retained, stranded and added",
+      "what_it_shows": "F15 annual saving; 0.35 currently means 65% takeout",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "No generic takeout % is supported by this file",
+      "existing_cells": {
+        "C15": {
+          "value": 0.35,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "F15"
+          ]
+        }
+      }
+    },
+    {
+      "id": "g_and_a_year1_cost",
+      "cells": [
+        "G15"
+      ],
+      "label": "Year 1 realization and one-time cost multiplier",
+      "unit": "fraction 0\u20131",
+      "required_evidence": "Separate timing and severance estimates",
+      "what_it_shows": "Both I15 EBITDA and T15 severance change together",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Must split into independent inputs",
+      "existing_cells": {
+        "G15": {
+          "value": 0.25,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "H15",
+            "I15"
+          ]
+        }
+      }
+    },
+    {
+      "id": "supplemental_cost",
+      "cells": [
+        "D16"
+      ],
+      "label": "Supplemental cost to achieve",
+      "unit": "one-time dollars",
+      "required_evidence": "Transition budget",
+      "what_it_shows": "T16 negative cash outflow",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Check overlap with H15/H18/IT",
+      "existing_cells": {
+        "D16": {
+          "value": 25000000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "T16"
+          ]
+        }
+      }
+    },
+    {
+      "id": "opex_base",
+      "cells": [
+        "F84",
+        "D18"
+      ],
+      "label": "Eligible normalized operating cost base",
+      "unit": "dollars/year",
+      "required_evidence": "Cost ledger split by who bears costs before and after conversion",
+      "what_it_shows": "D18=F84; F18=D18*(1-C18)",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "F84=219000000*2 is embedded old amount; do not retain merchandise profit while removing all retail costs",
+      "existing_cells": {
+        "F84": {
+          "value": 438000000.0,
+          "formula": "219000000*2",
+          "formula_attributes": {},
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "D18",
+            "F90"
+          ]
+        },
+        "D18": {
+          "value": 438000000.0,
+          "formula": "F84",
+          "formula_attributes": {},
+          "type": null,
+          "style": 2,
+          "precedents": [
+            "F84"
+          ],
+          "direct_dependents": [
+            "F18"
+          ]
+        }
+      }
+    },
+    {
+      "id": "opex_retained",
+      "cells": [
+        "C18"
+      ],
+      "label": "Share of eligible Opex retained",
+      "unit": "fraction 0\u20131",
+      "required_evidence": "Site-by-site current and post-conversion P&L",
+      "what_it_shows": "F18 annual savings; 0.95 currently means 5% takeout",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Large takeout needs lost margin and dealer commission offsets",
+      "existing_cells": {
+        "C18": {
+          "value": 0.95,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "F18"
+          ]
+        }
+      }
+    },
+    {
+      "id": "opex_year1_cost",
+      "cells": [
+        "G18"
+      ],
+      "label": "Year 1 realization and one-time cost multiplier",
+      "unit": "fraction 0\u20131",
+      "required_evidence": "Separate timing and transition/severance estimates",
+      "what_it_shows": "I18,T18 and G19/H19 change",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Must split into independent inputs",
+      "existing_cells": {
+        "G18": {
+          "value": 0.25,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "H18",
+            "I18",
+            "G19"
+          ]
+        }
+      }
+    },
+    {
+      "id": "rebrand_fraction",
+      "cells": [
+        "D19"
+      ],
+      "label": "Rebrand share",
+      "unit": "fraction 0\u20131",
+      "required_evidence": "Eligible brand contract inventory",
+      "what_it_shows": "Nothing: no dependents",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Disconnected",
+      "existing_cells": {
+        "D19": {
+          "value": 0.25,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": []
+        }
+      }
+    },
+    {
+      "id": "rebrand_site_count",
+      "cells": [
+        "E19"
+      ],
+      "label": "Eligible sites to rebrand",
+      "unit": "site count",
+      "required_evidence": "Exact eligible acquired sites",
+      "what_it_shows": "F19 benefit and T19/U19 conversion investment",
+      "entry_rule": "resolve site-count definition and replace error only after evidence",
+      "warning": "Literal #REF! error; intended formula missing",
+      "existing_cells": {
+        "E19": {
+          "value": "#REF!",
+          "formula": null,
+          "formula_attributes": null,
+          "type": "e",
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": [
+            "F19",
+            "T19",
+            "U19"
+          ]
+        }
+      }
+    },
+    {
+      "id": "rebrand_benefit",
+      "cells": [
+        "F19"
+      ],
+      "label": "Rebrand volume and net rate",
+      "unit": "gallons/site/month and dollars/gallon",
+      "required_evidence": "Actual eligible gallons, license/card savings and supplier economics",
+      "what_it_shows": "E19*80000*12*0.025",
+      "entry_rule": "expose separate per-site volume and net cpg inputs",
+      "warning": "2.5 cpg cannot duplicate Opex/card reductions or supply margins",
+      "existing_cells": {
+        "F19": {
+          "value": "#REF!",
+          "formula": "E19*80000*12*0.025",
+          "formula_attributes": {},
+          "type": "e",
+          "style": 2,
+          "precedents": [
+            "E19"
+          ],
+          "direct_dependents": [
+            "H19",
+            "I19",
+            "J19"
+          ]
+        }
+      }
+    },
+    {
+      "id": "rebrand_cost",
+      "cells": [
+        "T19",
+        "U19"
+      ],
+      "label": "Conversion cost and timing",
+      "unit": "dollars/site and fraction by year",
+      "required_evidence": "Scope-specific budget and supplier repayment obligations",
+      "what_it_shows": "Assumes $80000/site split 75%/25%",
+      "entry_rule": "expose separate cost and timing inputs",
+      "warning": "Separate cost from volume; same 80000 constant is used for unrelated assumptions",
+      "existing_cells": {
+        "T19": {
+          "value": "#REF!",
+          "formula": "E19*-80000*0.75",
+          "formula_attributes": {},
+          "type": "e",
+          "style": 2,
+          "precedents": [
+            "E19"
+          ],
+          "direct_dependents": []
+        },
+        "U19": {
+          "value": "#REF!",
+          "formula": "E19*-80000*0.25",
+          "formula_attributes": {},
+          "type": "e",
+          "style": 2,
+          "precedents": [
+            "E19"
+          ],
+          "direct_dependents": []
+        }
+      }
+    },
+    {
+      "id": "target_optimization",
+      "cells": [
+        "C21",
+        "E21",
+        "G21"
+      ],
+      "label": "Target eligible optimization gallons, net cpg and cost",
+      "unit": "gallons/year, cents/gallon, fraction",
+      "required_evidence": "Target pricing/logistics study and implementation cost",
+      "what_it_shows": "C21=E54*80%; F21=C21*E21/100; I21=75%; H21=F21*G21",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "H21 not scheduled in capital; eligibility and realization hardcoded",
+      "existing_cells": {
+        "C21": {
+          "value": 1277825200.0,
+          "formula": "E54*0.8",
+          "formula_attributes": {},
+          "type": null,
+          "style": 2,
+          "precedents": [
+            "E54"
+          ],
+          "direct_dependents": [
+            "F21"
+          ]
+        },
+        "E21": {
+          "value": 0.5,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "F21"
+          ]
+        },
+        "G21": {
+          "value": 0.5,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "H21"
+          ]
+        }
+      }
+    },
+    {
+      "id": "buyer_optimization",
+      "cells": [
+        "C22",
+        "E22",
+        "G22"
+      ],
+      "label": "Buyer eligible optimization gallons, net cpg and cost",
+      "unit": "gallons/year, cents/gallon, fraction",
+      "required_evidence": "Buyer overlap and deal-specific benefit evidence",
+      "what_it_shows": "C22=49000000/0.9; F22 net benefit; I22=75%; H22 capital",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "H22 not scheduled; existing buyer gallons stale and unsupported",
+      "existing_cells": {
+        "C22": {
+          "value": 54444444.44444444,
+          "formula": "49000000/0.9",
+          "formula_attributes": {},
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "F22"
+          ]
+        },
+        "E22": {
+          "value": 0.5,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "F22"
+          ]
+        },
+        "G22": {
+          "value": 0.5,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "H22"
+          ]
+        }
+      }
+    },
+    {
+      "id": "it_integration",
+      "cells": [
+        "D23"
+      ],
+      "label": "One-time IT integration cost",
+      "unit": "dollars",
+      "required_evidence": "Systems migration budget",
+      "what_it_shows": "T23 negative cash outflow",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Include incremental recurring costs separately",
+      "existing_cells": {
+        "D23": {
+          "value": 10000000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "T23"
+          ]
+        }
+      }
+    },
+    {
+      "id": "target_growth_capex",
+      "cells": [
+        "C95",
+        "D95",
+        "E95",
+        "C25"
+      ],
+      "label": "Target recurring growth capex",
+      "unit": "dollars/year; historical negatives",
+      "required_evidence": "Actual capex excluding acquisitions; forecast budget",
+      "what_it_shows": "E95 historical average; C25 positive spend base",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "D95 embeds 206.8m less 154.4m acquired spend",
+      "existing_cells": {
+        "C95": {
+          "value": -58500000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "E95"
+          ]
+        },
+        "D95": {
+          "value": -52400000.00000001,
+          "formula": "(206.8-154.4)*-1000000",
+          "formula_attributes": {},
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "E95"
+          ]
+        },
+        "E95": {
+          "value": -55450000.0,
+          "formula": "AVERAGE(C95:D95)",
+          "formula_attributes": {},
+          "type": null,
+          "style": 2,
+          "precedents": [
+            "C95",
+            "D95"
+          ],
+          "direct_dependents": [
+            "C25"
+          ]
+        },
+        "C25": {
+          "value": 55450000.0,
+          "formula": "-E95",
+          "formula_attributes": {},
+          "type": null,
+          "style": 2,
+          "precedents": [
+            "E95"
+          ],
+          "direct_dependents": [
+            "E25"
+          ]
+        }
+      }
+    },
+    {
+      "id": "target_maintenance_capex",
+      "cells": [
+        "D50",
+        "E50",
+        "F50",
+        "G50",
+        "E94",
+        "C27"
+      ],
+      "label": "Target recurring maintenance capex",
+      "unit": "$millions quarterly; dollars annual",
+      "required_evidence": "Current maintenance budget and historical actuals",
+      "what_it_shows": "E94 from J50 current projected maintenance; C27 positive spend base",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "E94 is not two-year average despite column heading; first-half amounts are embedded literals",
+      "existing_cells": {
+        "D50": {
+          "value": 13.6,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "F50",
+            "H50"
+          ]
+        },
+        "E50": {
+          "value": 9.8,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "G50",
+            "I50"
+          ]
+        },
+        "F50": {
+          "value": 9.500000000000002,
+          "formula": "23.1-D50",
+          "formula_attributes": {},
+          "type": null,
+          "style": 0,
+          "precedents": [
+            "D50"
+          ],
+          "direct_dependents": [
+            "H50"
+          ]
+        },
+        "G50": {
+          "value": 7.5,
+          "formula": "17.3-E50",
+          "formula_attributes": {},
+          "type": null,
+          "style": 0,
+          "precedents": [
+            "E50"
+          ],
+          "direct_dependents": [
+            "I50"
+          ]
+        },
+        "E94": {
+          "value": -47355000.00000001,
+          "formula": "J50*-1000000",
+          "formula_attributes": {},
+          "type": null,
+          "style": 2,
+          "precedents": [
+            "J50"
+          ],
+          "direct_dependents": [
+            "C27"
+          ]
+        },
+        "C27": {
+          "value": 47355000.00000001,
+          "formula": "-E94",
+          "formula_attributes": {},
+          "type": null,
+          "style": 2,
+          "precedents": [
+            "E94"
+          ],
+          "direct_dependents": [
+            "E27"
+          ]
+        }
+      }
+    },
+    {
+      "id": "buyer_capex",
+      "cells": [
+        "C26",
+        "C28"
+      ],
+      "label": "Buyer eligible growth and maintenance capex",
+      "unit": "dollars/year",
+      "required_evidence": "Current buyer budgets and deal-specific procurement opportunity",
+      "what_it_shows": "Procurement cash savings on buyer spend",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "No blanket savings on entire Sunoco capital budget without causation",
+      "existing_cells": {
+        "C26": {
+          "value": 180000000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "E26"
+          ]
+        },
+        "C28": {
+          "value": 66000000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "E28"
+          ]
+        }
+      }
+    },
+    {
+      "id": "capex_savings_rate",
+      "cells": [
+        "D25",
+        "D26",
+        "D27",
+        "D28"
+      ],
+      "label": "Capital procurement savings rate",
+      "unit": "fraction 0\u20131",
+      "required_evidence": "Quotes, procurement team validation",
+      "what_it_shows": "E25:E28=spend*savings rate",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "These are capital cash savings, not EBITDA",
+      "existing_cells": {
+        "D25": {
+          "value": 0.025,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "E25"
+          ]
+        },
+        "D26": {
+          "value": 0.025,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "E26"
+          ]
+        },
+        "D27": {
+          "value": 0.05,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "E27"
+          ]
+        },
+        "D28": {
+          "value": 0.05,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "E28"
+          ]
+        }
+      }
+    },
+    {
+      "id": "capex_savings_realization",
+      "cells": [
+        "G25",
+        "G26",
+        "G27",
+        "G28"
+      ],
+      "label": "Year 1 capital savings realization",
+      "unit": "fraction 0\u20131",
+      "required_evidence": "Project timing",
+      "what_it_shows": "I25:I28=E*G",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Actual control is G, not F labeled Phase in",
+      "existing_cells": {
+        "G25": {
+          "value": 0.5,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "I25"
+          ]
+        },
+        "G26": {
+          "value": 0.5,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "I26"
+          ]
+        },
+        "G27": {
+          "value": 0.5,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "I27"
+          ]
+        },
+        "G28": {
+          "value": 0.5,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "I28"
+          ]
+        }
+      }
+    },
+    {
+      "id": "unused_capex_phase",
+      "cells": [
+        "F25",
+        "F26",
+        "F27",
+        "F28"
+      ],
+      "label": "Unused phase/cost factor",
+      "unit": "fraction 0\u20131",
+      "required_evidence": "Clarify intended purpose",
+      "what_it_shows": "H25:H28 only",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "No downstream outputs or cash schedule",
+      "existing_cells": {
+        "F25": {
+          "value": 0.25,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "H25"
+          ]
+        },
+        "F26": {
+          "value": 0.25,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "H26"
+          ]
+        },
+        "F27": {
+          "value": 0.25,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "H27"
+          ]
+        },
+        "F28": {
+          "value": 0.25,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 4,
+          "precedents": [],
+          "direct_dependents": [
+            "H28"
+          ]
+        }
+      }
+    },
+    {
+      "id": "asset_inventory",
+      "cells": [
+        "C32",
+        "C33",
+        "C34",
+        "I33",
+        "I34",
+        "I35",
+        "I36"
+      ],
+      "label": "Sites and terminals by operating/ownership type",
+      "unit": "count",
+      "required_evidence": "Site roster, title/leases, dealer/supply contracts, transaction perimeter",
+      "what_it_shows": "Display only in current file",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Supplied sites are not owned assets; pending terminals not current assets; conflicts between count blocks",
+      "existing_cells": {
+        "C32": {
+          "value": 1057.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "C33": {
+          "value": 2129.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "C34": {
+          "value": 2.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "I33": {
+          "value": 353.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 7,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "I34": {
+          "value": 295.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "I35": {
+          "value": 192.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "I36": {
+          "value": 833.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        }
+      }
+    },
+    {
+      "id": "financial_periods",
+      "cells": [
+        "C53",
+        "D53",
+        "F53",
+        "D41",
+        "E41",
+        "F41",
+        "G41"
+      ],
+      "label": "Source fiscal periods",
+      "unit": "year/quarter",
+      "required_evidence": "Actual source financial dates",
+      "what_it_shows": "Labels only",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Changing headers does not load the corresponding data",
+      "existing_cells": {
+        "C53": {
+          "value": 2021.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 10,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D53": {
+          "value": 2022.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 11,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "F53": {
+          "value": "2023 Estimate",
+          "formula": null,
+          "formula_attributes": null,
+          "type": "s",
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D41": {
+          "value": "Q2 23",
+          "formula": null,
+          "formula_attributes": null,
+          "type": "s",
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "E41": {
+          "value": "Q2 22",
+          "formula": null,
+          "formula_attributes": null,
+          "type": "s",
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "F41": {
+          "value": "Q1 23",
+          "formula": null,
+          "formula_attributes": null,
+          "type": "s",
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "G41": {
+          "value": "Q1 22",
+          "formula": null,
+          "formula_attributes": null,
+          "type": "s",
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": []
+        }
+      }
+    },
+    {
+      "id": "quarterly_product_margin",
+      "cells": [
+        "D42",
+        "E42",
+        "F42",
+        "G42",
+        "D45",
+        "E45",
+        "F45",
+        "G45",
+        "D48",
+        "E48",
+        "F48",
+        "G48"
+      ],
+      "label": "Segment quarterly gross product margin",
+      "unit": "$millions/quarter",
+      "required_evidence": "Source quarterly segment financials",
+      "what_it_shows": "H/I annualize 1H; J/K add 2.5%; F62/F74/F78 convert to dollars",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Do not sum parent and child detail rows together if all populated",
+      "existing_cells": {
+        "D42": {
+          "value": 199.1,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "H42"
+          ]
+        },
+        "E42": {
+          "value": 198.9,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "I42"
+          ]
+        },
+        "F42": {
+          "value": 183.5,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "H42"
+          ]
+        },
+        "G42": {
+          "value": 173.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "I42"
+          ]
+        },
+        "D45": {
+          "value": 59.7,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "H45"
+          ]
+        },
+        "E45": {
+          "value": 90.5,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "I45"
+          ]
+        },
+        "F45": {
+          "value": 53.1,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "H45"
+          ]
+        },
+        "G45": {
+          "value": 47.1,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "I45"
+          ]
+        },
+        "D48": {
+          "value": 6.8,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "H48"
+          ]
+        },
+        "E48": {
+          "value": 12.5,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "I48"
+          ]
+        },
+        "F48": {
+          "value": 8.1,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "H48"
+          ]
+        },
+        "G48": {
+          "value": 8.1,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 0,
+          "precedents": [],
+          "direct_dependents": [
+            "I48"
+          ]
+        }
+      }
+    },
+    {
+      "id": "segment_volume",
+      "cells": [
+        "C54",
+        "D54",
+        "C64",
+        "D64",
+        "C76",
+        "D76"
+      ],
+      "label": "Historic annual segment gallons",
+      "unit": "gallons/year",
+      "required_evidence": "Annual segment volume records",
+      "what_it_shows": "E averages; GDSO E54 feeds C21",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Optimization needs current eligible future base, not default old average",
+      "existing_cells": {
+        "C54": {
+          "value": 1546459000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E54"
+          ]
+        },
+        "D54": {
+          "value": 1648104000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E54"
+          ]
+        },
+        "C64": {
+          "value": 3667211000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E64"
+          ]
+        },
+        "D64": {
+          "value": 3408709000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E64"
+          ]
+        },
+        "C76": {
+          "value": 369956000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": [
+            "E76"
+          ]
+        },
+        "D76": {
+          "value": 414871000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 24,
+          "precedents": [],
+          "direct_dependents": [
+            "E76"
+          ]
+        }
+      }
+    },
+    {
+      "id": "segment_sales",
+      "cells": [
+        "C56",
+        "D56",
+        "C57",
+        "D57",
+        "C66",
+        "D66",
+        "C67",
+        "D67",
+        "C68",
+        "D68",
+        "C77",
+        "D77"
+      ],
+      "label": "Historic annual segment sales",
+      "unit": "dollars/year",
+      "required_evidence": "Annual segment financials",
+      "what_it_shows": "Segment totals and E averages",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Combined total C80:D80 independently hardcoded",
+      "existing_cells": {
+        "C56": {
+          "value": 4138969000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E56",
+            "C58"
+          ]
+        },
+        "D56": {
+          "value": 6140823000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E56",
+            "D58"
+          ]
+        },
+        "C57": {
+          "value": 476405000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E57",
+            "C58"
+          ]
+        },
+        "D57": {
+          "value": 559826000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E57",
+            "D58"
+          ]
+        },
+        "C66": {
+          "value": 5357128000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E66",
+            "C69"
+          ]
+        },
+        "D66": {
+          "value": 6408184000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E66",
+            "D69"
+          ]
+        },
+        "C67": {
+          "value": 2465232000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E67",
+            "C69"
+          ]
+        },
+        "D67": {
+          "value": 4449647000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E67",
+            "D69"
+          ]
+        },
+        "C68": {
+          "value": 61776000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E68",
+            "C69"
+          ]
+        },
+        "D68": {
+          "value": 5662000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E68",
+            "D69"
+          ]
+        },
+        "C77": {
+          "value": 749767000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": [
+            "E77"
+          ]
+        },
+        "D77": {
+          "value": 1313744000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 24,
+          "precedents": [],
+          "direct_dependents": [
+            "E77"
+          ]
+        }
+      }
+    },
+    {
+      "id": "segment_product_margin",
+      "cells": [
+        "C60",
+        "D60",
+        "C61",
+        "D61",
+        "C71",
+        "D71",
+        "C72",
+        "D72",
+        "C73",
+        "D73",
+        "C78",
+        "D78"
+      ],
+      "label": "Historic annual segment product margin",
+      "unit": "dollars/year",
+      "required_evidence": "Annual segment financials",
+      "what_it_shows": "Segment totals and E averages",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Combined C81:D81 independently hardcoded",
+      "existing_cells": {
+        "C60": {
+          "value": 413756000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E60",
+            "C62"
+          ]
+        },
+        "D60": {
+          "value": 588676000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E60",
+            "D62"
+          ]
+        },
+        "C61": {
+          "value": 233881000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E61",
+            "C62"
+          ]
+        },
+        "D61": {
+          "value": 267941000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E61",
+            "D62"
+          ]
+        },
+        "C71": {
+          "value": 86289000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E71",
+            "C74"
+          ]
+        },
+        "D71": {
+          "value": 106982000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E71",
+            "D74"
+          ]
+        },
+        "C72": {
+          "value": 65429000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E72",
+            "C74"
+          ]
+        },
+        "D72": {
+          "value": 190077000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E72",
+            "D74"
+          ]
+        },
+        "C73": {
+          "value": -12845000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 13,
+          "precedents": [],
+          "direct_dependents": [
+            "E73",
+            "C74"
+          ]
+        },
+        "D73": {
+          "value": -9362000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 14,
+          "precedents": [],
+          "direct_dependents": [
+            "E73",
+            "D74"
+          ]
+        },
+        "C78": {
+          "value": 15604000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 21,
+          "precedents": [],
+          "direct_dependents": [
+            "E78"
+          ]
+        },
+        "D78": {
+          "value": 40973000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 22,
+          "precedents": [],
+          "direct_dependents": [
+            "E78"
+          ]
+        }
+      }
+    },
+    {
+      "id": "historical_financial_reconciliation",
+      "cells": [
+        "C80",
+        "D80",
+        "C81",
+        "D81",
+        "C82",
+        "D82",
+        "C84",
+        "D84",
+        "C85",
+        "D85",
+        "C86",
+        "D86",
+        "C87",
+        "D87",
+        "C88",
+        "D88",
+        "C89",
+        "D89",
+        "C90",
+        "D90",
+        "C91",
+        "D91",
+        "C92",
+        "D92",
+        "C93",
+        "D93"
+      ],
+      "label": "Reported historical financial rows",
+      "unit": "dollars/year",
+      "required_evidence": "Annual statements and EBITDA reconciliation",
+      "what_it_shows": "Selected averages and historical financial context",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Historical EBITDA/adjusted EBITDA are hardcoded; most expense rows do not feed forecast",
+      "existing_cells": {
+        "C80": {
+          "value": 13248277000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": [
+            "E80"
+          ]
+        },
+        "D80": {
+          "value": 18877886000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 24,
+          "precedents": [],
+          "direct_dependents": [
+            "E80"
+          ]
+        },
+        "C81": {
+          "value": 802114000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": [
+            "E81",
+            "C83"
+          ]
+        },
+        "D81": {
+          "value": 1185287000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 24,
+          "precedents": [],
+          "direct_dependents": [
+            "E81",
+            "D83"
+          ]
+        },
+        "C82": {
+          "value": -82851000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": [
+            "E82",
+            "C83"
+          ]
+        },
+        "D82": {
+          "value": -87638000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 24,
+          "precedents": [],
+          "direct_dependents": [
+            "E82",
+            "D83"
+          ]
+        },
+        "C84": {
+          "value": 353600000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D84": {
+          "value": 445300000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "C85": {
+          "value": 212900000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D85": {
+          "value": 263100000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "C86": {
+          "value": 102241000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D86": {
+          "value": 104796000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "C87": {
+          "value": 80086000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D87": {
+          "value": 81259000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "C88": {
+          "value": 1336000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D88": {
+          "value": 16822000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "C89": {
+          "value": 60796000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D89": {
+          "value": 362207000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "C90": {
+          "value": 244459000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "E90"
+          ]
+        },
+        "D90": {
+          "value": 565084000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "E90"
+          ]
+        },
+        "C91": {
+          "value": -506000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D91": {
+          "value": -79873000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "C92": {
+          "value": 380000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "D92": {
+          "value": 0.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": []
+        },
+        "C93": {
+          "value": 244333000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "E93"
+          ]
+        },
+        "D93": {
+          "value": 485211000.0,
+          "formula": null,
+          "formula_attributes": null,
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "E93"
+          ]
+        }
+      }
+    },
+    {
+      "id": "current_estimate",
+      "cells": [
+        "F84",
+        "F85",
+        "F86"
+      ],
+      "label": "Current annualized expenses",
+      "unit": "dollars/year",
+      "required_evidence": "Current TTM or forecast cost and normalization",
+      "what_it_shows": "Opex and G&A feed F90; D&A informational",
+      "entry_rule": "replace source constants; preserve calculation formulas",
+      "warning": "Embedded half-year dollar constants; current F93 simply equals F90",
+      "existing_cells": {
+        "F84": {
+          "value": 438000000.0,
+          "formula": "219000000*2",
+          "formula_attributes": {},
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "D18",
+            "F90"
+          ]
+        },
+        "F85": {
+          "value": 258000000.0,
+          "formula": "129000000*2",
+          "formula_attributes": {},
+          "type": null,
+          "style": 3,
+          "precedents": [],
+          "direct_dependents": [
+            "D15",
+            "F90"
+          ]
+        },
+        "F86": {
+          "value": 106000000.0,
+          "formula": "53000000*2",
+          "formula_attributes": {},
+          "type": null,
+          "style": 2,
+          "precedents": [],
+          "direct_dependents": []
+        }
+      }
+    }
+  ],
+  "required_new_input_groups": [
+    {
+      "id": "transaction_identity",
+      "description": "Target name, scope, as-of date, financial reporting currency, acquired entities and closing assumption",
+      "existing_cells": []
+    },
+    {
+      "id": "owned_lease_supply_inventory",
+      "description": "Site ID/address; fee owned, leased or supply only; who owns tanks; brand; contract term; assignment and conversion rights",
+      "existing_cells": []
+    },
+    {
+      "id": "baseline_site_pnl",
+      "description": "Annual gallons, fuel GP, merchandise GP, rent and ancillary profit, dealer compensation, card expense, site cost and lease expense by site",
+      "existing_cells": []
+    },
+    {
+      "id": "post_conversion_site_pnl",
+      "description": "Dealer commission, who retains merchandise and other income, dealer rent, site/lease/property/environmental cost responsibility, retained staffing",
+      "existing_cells": []
+    },
+    {
+      "id": "dealer_viability",
+      "description": "Dealer income and inside GP less dealer-paid labor, utilities, rent and other costs; minimum sustainable economics supplied by user",
+      "existing_cells": []
+    },
+    {
+      "id": "supply_card_actions",
+      "description": "Incremental rate by eligible gallon/account; freight and rack; rebates; fees; rates already in baseline; overlap exclusions",
+      "existing_cells": []
+    },
+    {
+      "id": "corporate_actions",
+      "description": "Each function/account removed, retained/stranded, replacement cost, implementation date and evidence",
+      "existing_cells": []
+    },
+    {
+      "id": "conversion_cost_schedule",
+      "description": "Brand conversion; BP or other contractual repayments as documented; severance; IT; environmental; additional real-estate purchase; working capital",
+      "existing_cells": []
+    },
+    {
+      "id": "cash_flow_and_valuation",
+      "description": "Price, fees, capex by year, taxes if applicable, working capital, residual/exit assumption, hurdle rate and timing",
+      "existing_cells": []
+    },
+    {
+      "id": "financing_and_capacity",
+      "description": "Cash/debt/equity mix, assumed debt and leases, financing cost, debt service, pro forma leverage and coverage definitions",
+      "existing_cells": []
+    },
+    {
+      "id": "source_register",
+      "description": "Every input source/period/unit/status and specific missing items; separate verified fact, management estimate and user assumption",
+      "existing_cells": []
+    }
+  ],
+  "all_numeric_constants": {
+    "C4": {
+      "value": 30.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "D4"
+      ]
+    },
+    "E4": {
+      "value": 10.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "F4",
+        "K9",
+        "L9",
+        "M9",
+        "N9",
+        "O9",
+        "P9",
+        "Q9",
+        "R9"
+      ]
+    },
+    "G4": {
+      "value": 0.3,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "H4"
+      ]
+    },
+    "C5": {
+      "value": 2.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "H5"
+      ]
+    },
+    "D5": {
+      "value": 30000000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "F5",
+        "D9"
+      ]
+    },
+    "E5": {
+      "value": 1.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "F5",
+        "K9",
+        "L9",
+        "M9",
+        "N9",
+        "O9",
+        "P9",
+        "Q9",
+        "R9"
+      ]
+    },
+    "C6": {
+      "value": 10.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D6": {
+      "value": 50000000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "F6",
+        "H6",
+        "D9"
+      ]
+    },
+    "E6": {
+      "value": 5.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "F6",
+        "K9",
+        "L9",
+        "M9",
+        "N9",
+        "O9",
+        "P9",
+        "Q9",
+        "R9"
+      ]
+    },
+    "C9": {
+      "value": 0.75,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "F9"
+      ]
+    },
+    "E9": {
+      "value": 1.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "F9",
+        "K9",
+        "L9",
+        "M9",
+        "N9",
+        "O9",
+        "P9",
+        "Q9",
+        "R9"
+      ]
+    },
+    "G9": {
+      "value": 1.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "H9": {
+      "value": 0.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C10": {
+      "value": 1.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "E10": {
+      "value": 1.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "G10": {
+      "value": 1.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "H10": {
+      "value": 0.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C11": {
+      "value": 1.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "E11": {
+      "value": 1.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "G11": {
+      "value": 1.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "H11": {
+      "value": 0.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C15": {
+      "value": 0.35,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "F15"
+      ]
+    },
+    "G15": {
+      "value": 0.25,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "H15",
+        "I15"
+      ]
+    },
+    "D16": {
+      "value": 25000000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "T16"
+      ]
+    },
+    "C18": {
+      "value": 0.95,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "F18"
+      ]
+    },
+    "G18": {
+      "value": 0.25,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "H18",
+        "I18",
+        "G19"
+      ]
+    },
+    "D19": {
+      "value": 0.25,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "E21": {
+      "value": 0.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "F21"
+      ]
+    },
+    "G21": {
+      "value": 0.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "H21"
+      ]
+    },
+    "E22": {
+      "value": 0.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "F22"
+      ]
+    },
+    "G22": {
+      "value": 0.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "H22"
+      ]
+    },
+    "D23": {
+      "value": 10000000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "T23"
+      ]
+    },
+    "D25": {
+      "value": 0.025,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "E25"
+      ]
+    },
+    "F25": {
+      "value": 0.25,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "H25"
+      ]
+    },
+    "G25": {
+      "value": 0.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "I25"
+      ]
+    },
+    "C26": {
+      "value": 180000000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "E26"
+      ]
+    },
+    "D26": {
+      "value": 0.025,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "E26"
+      ]
+    },
+    "F26": {
+      "value": 0.25,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "H26"
+      ]
+    },
+    "G26": {
+      "value": 0.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "I26"
+      ]
+    },
+    "D27": {
+      "value": 0.05,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "E27"
+      ]
+    },
+    "F27": {
+      "value": 0.25,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "H27"
+      ]
+    },
+    "G27": {
+      "value": 0.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "I27"
+      ]
+    },
+    "C28": {
+      "value": 66000000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "E28"
+      ]
+    },
+    "D28": {
+      "value": 0.05,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "E28"
+      ]
+    },
+    "F28": {
+      "value": 0.25,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "H28"
+      ]
+    },
+    "G28": {
+      "value": 0.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": [
+        "I28"
+      ]
+    },
+    "C32": {
+      "value": 1057.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C33": {
+      "value": 2129.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "I33": {
+      "value": 353.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 7,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C34": {
+      "value": 2.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "I34": {
+      "value": 295.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "I35": {
+      "value": 192.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "I36": {
+      "value": 833.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "M41": {
+      "value": 2018.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "N41": {
+      "value": 2019.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "O41": {
+      "value": 2020.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "P41": {
+      "value": 2021.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "Q41": {
+      "value": 2022.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "R41": {
+      "value": 2023.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "T41": {
+      "value": 2018.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "U41": {
+      "value": 2019.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "V41": {
+      "value": 2020.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "W41": {
+      "value": 2021.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "X41": {
+      "value": 2022.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "Y41": {
+      "value": 2023.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C42": {
+      "value": 0.75,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D42": {
+      "value": 199.1,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "H42"
+      ]
+    },
+    "E42": {
+      "value": 198.9,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "I42"
+      ]
+    },
+    "F42": {
+      "value": 183.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "H42"
+      ]
+    },
+    "G42": {
+      "value": 173.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "I42"
+      ]
+    },
+    "C43": {
+      "value": 0.27,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "M43": {
+      "value": 23.4,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "N43": {
+      "value": 23.1,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "O43": {
+      "value": 29.3,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "P43": {
+      "value": 26.8,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "Q43": {
+      "value": 35.7,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "R43": {
+      "value": 36.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "T43": {
+      "value": 203.1,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "U43": {
+      "value": 225.1,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "V43": {
+      "value": 205.9,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "W43": {
+      "value": 233.9,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "X43": {
+      "value": 267.9,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "Y43": {
+      "value": 274.8,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C44": {
+      "value": 0.48,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C45": {
+      "value": 0.23,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D45": {
+      "value": 59.7,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "H45"
+      ]
+    },
+    "E45": {
+      "value": 90.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "I45"
+      ]
+    },
+    "F45": {
+      "value": 53.1,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "H45"
+      ]
+    },
+    "G45": {
+      "value": 47.1,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "I45"
+      ]
+    },
+    "C46": {
+      "value": 0.15,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C47": {
+      "value": 0.08,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C48": {
+      "value": 0.02,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 4,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D48": {
+      "value": 6.8,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "H48"
+      ]
+    },
+    "E48": {
+      "value": 12.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "I48"
+      ]
+    },
+    "F48": {
+      "value": 8.1,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "H48"
+      ]
+    },
+    "G48": {
+      "value": 8.1,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "I48"
+      ]
+    },
+    "M49": {
+      "value": 12.6,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "N49": {
+      "value": 11.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "O49": {
+      "value": 14.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "P49": {
+      "value": 14.4,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "Q49": {
+      "value": 21.7,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "R49": {
+      "value": 21.5,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D50": {
+      "value": 13.6,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "F50",
+        "H50"
+      ]
+    },
+    "E50": {
+      "value": 9.8,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 0,
+      "precedents": [],
+      "direct_dependents": [
+        "G50",
+        "I50"
+      ]
+    },
+    "C53": {
+      "value": 2021.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 10,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D53": {
+      "value": 2022.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 11,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C54": {
+      "value": 1546459000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E54"
+      ]
+    },
+    "D54": {
+      "value": 1648104000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E54"
+      ]
+    },
+    "C56": {
+      "value": 4138969000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E56",
+        "C58"
+      ]
+    },
+    "D56": {
+      "value": 6140823000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E56",
+        "D58"
+      ]
+    },
+    "C57": {
+      "value": 476405000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E57",
+        "C58"
+      ]
+    },
+    "D57": {
+      "value": 559826000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E57",
+        "D58"
+      ]
+    },
+    "C60": {
+      "value": 413756000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E60",
+        "C62"
+      ]
+    },
+    "D60": {
+      "value": 588676000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E60",
+        "D62"
+      ]
+    },
+    "C61": {
+      "value": 233881000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E61",
+        "C62"
+      ]
+    },
+    "D61": {
+      "value": 267941000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E61",
+        "D62"
+      ]
+    },
+    "C64": {
+      "value": 3667211000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E64"
+      ]
+    },
+    "D64": {
+      "value": 3408709000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E64"
+      ]
+    },
+    "C66": {
+      "value": 5357128000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E66",
+        "C69"
+      ]
+    },
+    "D66": {
+      "value": 6408184000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E66",
+        "D69"
+      ]
+    },
+    "C67": {
+      "value": 2465232000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E67",
+        "C69"
+      ]
+    },
+    "D67": {
+      "value": 4449647000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E67",
+        "D69"
+      ]
+    },
+    "C68": {
+      "value": 61776000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E68",
+        "C69"
+      ]
+    },
+    "D68": {
+      "value": 5662000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E68",
+        "D69"
+      ]
+    },
+    "C71": {
+      "value": 86289000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E71",
+        "C74"
+      ]
+    },
+    "D71": {
+      "value": 106982000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E71",
+        "D74"
+      ]
+    },
+    "C72": {
+      "value": 65429000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E72",
+        "C74"
+      ]
+    },
+    "D72": {
+      "value": 190077000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E72",
+        "D74"
+      ]
+    },
+    "C73": {
+      "value": -12845000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 13,
+      "precedents": [],
+      "direct_dependents": [
+        "E73",
+        "C74"
+      ]
+    },
+    "D73": {
+      "value": -9362000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 14,
+      "precedents": [],
+      "direct_dependents": [
+        "E73",
+        "D74"
+      ]
+    },
+    "C76": {
+      "value": 369956000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": [
+        "E76"
+      ]
+    },
+    "D76": {
+      "value": 414871000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 24,
+      "precedents": [],
+      "direct_dependents": [
+        "E76"
+      ]
+    },
+    "C77": {
+      "value": 749767000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": [
+        "E77"
+      ]
+    },
+    "D77": {
+      "value": 1313744000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 24,
+      "precedents": [],
+      "direct_dependents": [
+        "E77"
+      ]
+    },
+    "C78": {
+      "value": 15604000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 21,
+      "precedents": [],
+      "direct_dependents": [
+        "E78"
+      ]
+    },
+    "D78": {
+      "value": 40973000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 22,
+      "precedents": [],
+      "direct_dependents": [
+        "E78"
+      ]
+    },
+    "C80": {
+      "value": 13248277000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": [
+        "E80"
+      ]
+    },
+    "D80": {
+      "value": 18877886000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 24,
+      "precedents": [],
+      "direct_dependents": [
+        "E80"
+      ]
+    },
+    "C81": {
+      "value": 802114000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": [
+        "E81",
+        "C83"
+      ]
+    },
+    "D81": {
+      "value": 1185287000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 24,
+      "precedents": [],
+      "direct_dependents": [
+        "E81",
+        "D83"
+      ]
+    },
+    "C82": {
+      "value": -82851000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": [
+        "E82",
+        "C83"
+      ]
+    },
+    "D82": {
+      "value": -87638000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 24,
+      "precedents": [],
+      "direct_dependents": [
+        "E82",
+        "D83"
+      ]
+    },
+    "C84": {
+      "value": 353600000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D84": {
+      "value": 445300000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C85": {
+      "value": 212900000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D85": {
+      "value": 263100000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C86": {
+      "value": 102241000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D86": {
+      "value": 104796000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C87": {
+      "value": 80086000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D87": {
+      "value": 81259000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C88": {
+      "value": 1336000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D88": {
+      "value": 16822000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C89": {
+      "value": 60796000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D89": {
+      "value": 362207000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C90": {
+      "value": 244459000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "E90"
+      ]
+    },
+    "D90": {
+      "value": 565084000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "E90"
+      ]
+    },
+    "C91": {
+      "value": -506000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D91": {
+      "value": -79873000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C92": {
+      "value": 380000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D92": {
+      "value": 0.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C93": {
+      "value": 244333000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "E93"
+      ]
+    },
+    "D93": {
+      "value": 485211000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "E93"
+      ]
+    },
+    "C94": {
+      "value": -43300000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "D94": {
+      "value": -54400000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "C95": {
+      "value": -58500000.0,
+      "formula": null,
+      "formula_attributes": null,
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "E95"
+      ]
+    }
+  },
+  "formulas_with_embedded_numbers": {
+    "D4": {
+      "value": 28800000.0,
+      "formula": "80000*C4*12",
+      "formula_attributes": {},
+      "type": null,
+      "style": 3,
+      "precedents": [
+        "C4"
+      ],
+      "direct_dependents": [
+        "F4",
+        "D9"
+      ]
+    },
+    "F4": {
+      "value": 2880000.0,
+      "formula": "D4*E4/100",
+      "formula_attributes": {},
+      "type": null,
+      "style": 3,
+      "precedents": [
+        "D4",
+        "E4"
+      ],
+      "direct_dependents": [
+        "H4",
+        "J4",
+        "K4",
+        "L4",
+        "M4",
+        "N4",
+        "O4",
+        "P4",
+        "Q4",
+        "R4"
+      ]
+    },
+    "F5": {
+      "value": 300000.0,
+      "formula": "D5*E5/100",
+      "formula_attributes": {},
+      "type": null,
+      "style": 3,
+      "precedents": [
+        "D5",
+        "E5"
+      ],
+      "direct_dependents": [
+        "I5",
+        "J5"
+      ]
+    },
+    "H5": {
+      "value": 200000.0,
+      "formula": "C5*100000",
+      "formula_attributes": {},
+      "type": null,
+      "style": 3,
+      "precedents": [
+        "C5"
+      ],
+      "direct_dependents": [
+        "T5"
+      ]
+    },
+    "I5": {
+      "value": 150000.0,
+      "formula": "F5/2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "F5"
+      ],
+      "direct_dependents": []
+    },
+    "F6": {
+      "value": 2500000.0,
+      "formula": "D6*E6/100",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "D6",
+        "E6"
+      ],
+      "direct_dependents": [
+        "G6",
+        "I6",
+        "J6"
+      ]
+    },
+    "H6": {
+      "value": 5479452.05479452,
+      "formula": "D6/365*10*4",
+      "formula_attributes": {},
+      "type": null,
+      "style": 3,
+      "precedents": [
+        "D6"
+      ],
+      "direct_dependents": [
+        "G6",
+        "T6",
+        "AC6"
+      ]
+    },
+    "I6": {
+      "value": 1250000.0,
+      "formula": "F6*0.5",
+      "formula_attributes": {},
+      "type": null,
+      "style": 6,
+      "precedents": [
+        "F6"
+      ],
+      "direct_dependents": []
+    },
+    "F9": {
+      "value": 816000.0,
+      "formula": "C9*D9*E9/100",
+      "formula_attributes": {},
+      "type": null,
+      "style": 3,
+      "precedents": [
+        "C9",
+        "D9",
+        "E9"
+      ],
+      "direct_dependents": [
+        "J9"
+      ]
+    },
+    "I9": {
+      "value": 204000.0,
+      "formula": "J9*0.25",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "J9"
+      ],
+      "direct_dependents": []
+    },
+    "K9": {
+      "value": 1376000.0,
+      "formula": "(K6/$E$6*100+K5/$E$5*100+K4/$E$4*100)*($E$9/100)",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "E4",
+        "K4",
+        "E5",
+        "K5",
+        "E6",
+        "K6",
+        "E9"
+      ],
+      "direct_dependents": []
+    },
+    "L9": {
+      "value": 1664000.0,
+      "formula": "(L6/$E$6*100+L5/$E$5*100+L4/$E$4*100)*($E$9/100)",
+      "formula_attributes": {
+        "t": "shared",
+        "ref": "L9:R9",
+        "si": "3"
+      },
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "E4",
+        "L4",
+        "E5",
+        "L5",
+        "E6",
+        "L6",
+        "E9"
+      ],
+      "direct_dependents": []
+    },
+    "M9": {
+      "value": 1952000.0,
+      "formula": "(M6/$E$6*100+M5/$E$5*100+M4/$E$4*100)*($E$9/100)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "3"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "L9",
+      "precedents": [
+        "E4",
+        "M4",
+        "E5",
+        "M5",
+        "E6",
+        "M6",
+        "E9"
+      ],
+      "direct_dependents": []
+    },
+    "N9": {
+      "value": 2240000.0,
+      "formula": "(N6/$E$6*100+N5/$E$5*100+N4/$E$4*100)*($E$9/100)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "3"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "L9",
+      "precedents": [
+        "E4",
+        "N4",
+        "E5",
+        "N5",
+        "E6",
+        "N6",
+        "E9"
+      ],
+      "direct_dependents": []
+    },
+    "O9": {
+      "value": 2528000.0,
+      "formula": "(O6/$E$6*100+O5/$E$5*100+O4/$E$4*100)*($E$9/100)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "3"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "L9",
+      "precedents": [
+        "E4",
+        "O4",
+        "E5",
+        "O5",
+        "E6",
+        "O6",
+        "E9"
+      ],
+      "direct_dependents": []
+    },
+    "P9": {
+      "value": 2816000.0,
+      "formula": "(P6/$E$6*100+P5/$E$5*100+P4/$E$4*100)*($E$9/100)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "3"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "L9",
+      "precedents": [
+        "E4",
+        "P4",
+        "E5",
+        "P5",
+        "E6",
+        "P6",
+        "E9"
+      ],
+      "direct_dependents": []
+    },
+    "Q9": {
+      "value": 3104000.0,
+      "formula": "(Q6/$E$6*100+Q5/$E$5*100+Q4/$E$4*100)*($E$9/100)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "3"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "L9",
+      "precedents": [
+        "E4",
+        "Q4",
+        "E5",
+        "Q5",
+        "E6",
+        "Q6",
+        "E9"
+      ],
+      "direct_dependents": []
+    },
+    "R9": {
+      "value": 3392000.0,
+      "formula": "(R6/$E$6*100+R5/$E$5*100+R4/$E$4*100)*($E$9/100)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "3"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "L9",
+      "precedents": [
+        "E4",
+        "R4",
+        "E5",
+        "R5",
+        "E6",
+        "R6",
+        "E9"
+      ],
+      "direct_dependents": []
+    },
+    "F13": {
+      "value": 20000000.0,
+      "formula": "18000000+2000000",
+      "formula_attributes": {},
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "I13",
+        "J13"
+      ]
+    },
+    "I13": {
+      "value": 10000000.0,
+      "formula": "F13*0.5",
+      "formula_attributes": {},
+      "type": null,
+      "style": 6,
+      "precedents": [
+        "F13"
+      ],
+      "direct_dependents": []
+    },
+    "F15": {
+      "value": 167700000.0,
+      "formula": "D15*(1-C15)",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "C15",
+        "D15"
+      ],
+      "direct_dependents": [
+        "H15",
+        "I15",
+        "J15"
+      ]
+    },
+    "F18": {
+      "value": 21900000.00000002,
+      "formula": "D18*(1-C18)",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "C18",
+        "D18"
+      ],
+      "direct_dependents": [
+        "H18",
+        "I18",
+        "J18"
+      ]
+    },
+    "F19": {
+      "value": "#REF!",
+      "formula": "E19*80000*12*0.025",
+      "formula_attributes": {},
+      "type": "e",
+      "style": 2,
+      "precedents": [
+        "E19"
+      ],
+      "direct_dependents": [
+        "H19",
+        "I19",
+        "J19"
+      ]
+    },
+    "I19": {
+      "value": "#REF!",
+      "formula": "F19*0.75",
+      "formula_attributes": {},
+      "type": "e",
+      "style": 2,
+      "precedents": [
+        "F19"
+      ],
+      "direct_dependents": []
+    },
+    "T19": {
+      "value": "#REF!",
+      "formula": "E19*-80000*0.75",
+      "formula_attributes": {},
+      "type": "e",
+      "style": 2,
+      "precedents": [
+        "E19"
+      ],
+      "direct_dependents": []
+    },
+    "U19": {
+      "value": "#REF!",
+      "formula": "E19*-80000*0.25",
+      "formula_attributes": {},
+      "type": "e",
+      "style": 2,
+      "precedents": [
+        "E19"
+      ],
+      "direct_dependents": []
+    },
+    "C21": {
+      "value": 1277825200.0,
+      "formula": "E54*0.8",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "E54"
+      ],
+      "direct_dependents": [
+        "F21"
+      ]
+    },
+    "F21": {
+      "value": 6389126.0,
+      "formula": "C21*E21/100",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "C21",
+        "E21"
+      ],
+      "direct_dependents": [
+        "H21",
+        "I21",
+        "J21"
+      ]
+    },
+    "I21": {
+      "value": 4791844.5,
+      "formula": "F21*0.75",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "F21"
+      ],
+      "direct_dependents": []
+    },
+    "C22": {
+      "value": 54444444.44444444,
+      "formula": "49000000/0.9",
+      "formula_attributes": {},
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "F22"
+      ]
+    },
+    "F22": {
+      "value": 272222.2222222222,
+      "formula": "C22*E22/100",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "C22",
+        "E22"
+      ],
+      "direct_dependents": [
+        "H22",
+        "I22",
+        "J22"
+      ]
+    },
+    "I22": {
+      "value": 204166.66666666663,
+      "formula": "F22*0.75",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "F22"
+      ],
+      "direct_dependents": []
+    },
+    "H42": {
+      "value": 765.2,
+      "formula": "(F42+D42)*2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "D42",
+        "F42"
+      ],
+      "direct_dependents": [
+        "J42",
+        "H49"
+      ]
+    },
+    "I42": {
+      "value": 743.8,
+      "formula": "(G42+E42)*2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "E42",
+        "G42"
+      ],
+      "direct_dependents": [
+        "K42",
+        "I49"
+      ]
+    },
+    "J42": {
+      "value": 784.33,
+      "formula": "H42+H42*0.05/2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "H42"
+      ],
+      "direct_dependents": [
+        "J49",
+        "F62"
+      ]
+    },
+    "K42": {
+      "value": 762.395,
+      "formula": "I42+I42*0.05/2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "I42"
+      ],
+      "direct_dependents": [
+        "K49"
+      ]
+    },
+    "H43": {
+      "value": 0.0,
+      "formula": "(F43+D43)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "ref": "H43:I48",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "D43",
+        "F43"
+      ],
+      "direct_dependents": [
+        "J43",
+        "H49"
+      ]
+    },
+    "I43": {
+      "value": 0.0,
+      "formula": "(G43+E43)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "H43",
+      "precedents": [
+        "E43",
+        "G43"
+      ],
+      "direct_dependents": [
+        "K43",
+        "I49"
+      ]
+    },
+    "J43": {
+      "value": 0.0,
+      "formula": "H43+H43*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "ref": "J43:K48",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "H43"
+      ],
+      "direct_dependents": [
+        "J49"
+      ]
+    },
+    "K43": {
+      "value": 0.0,
+      "formula": "I43+I43*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "J43",
+      "precedents": [
+        "I43"
+      ],
+      "direct_dependents": [
+        "K49"
+      ]
+    },
+    "H44": {
+      "value": 0.0,
+      "formula": "(F44+D44)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "H43",
+      "precedents": [
+        "D44",
+        "F44"
+      ],
+      "direct_dependents": [
+        "J44",
+        "H49"
+      ]
+    },
+    "I44": {
+      "value": 0.0,
+      "formula": "(G44+E44)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "H43",
+      "precedents": [
+        "E44",
+        "G44"
+      ],
+      "direct_dependents": [
+        "K44",
+        "I49"
+      ]
+    },
+    "J44": {
+      "value": 0.0,
+      "formula": "H44+H44*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "J43",
+      "precedents": [
+        "H44"
+      ],
+      "direct_dependents": [
+        "J49"
+      ]
+    },
+    "K44": {
+      "value": 0.0,
+      "formula": "I44+I44*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "J43",
+      "precedents": [
+        "I44"
+      ],
+      "direct_dependents": [
+        "K49"
+      ]
+    },
+    "H45": {
+      "value": 225.60000000000002,
+      "formula": "(F45+D45)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "H43",
+      "precedents": [
+        "D45",
+        "F45"
+      ],
+      "direct_dependents": [
+        "J45",
+        "H49"
+      ]
+    },
+    "I45": {
+      "value": 275.2,
+      "formula": "(G45+E45)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "H43",
+      "precedents": [
+        "E45",
+        "G45"
+      ],
+      "direct_dependents": [
+        "K45",
+        "I49"
+      ]
+    },
+    "J45": {
+      "value": 231.24,
+      "formula": "H45+H45*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "J43",
+      "precedents": [
+        "H45"
+      ],
+      "direct_dependents": [
+        "J49",
+        "F74"
+      ]
+    },
+    "K45": {
+      "value": 282.08,
+      "formula": "I45+I45*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "J43",
+      "precedents": [
+        "I45"
+      ],
+      "direct_dependents": [
+        "K49"
+      ]
+    },
+    "H46": {
+      "value": 0.0,
+      "formula": "(F46+D46)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "H43",
+      "precedents": [
+        "D46",
+        "F46"
+      ],
+      "direct_dependents": [
+        "J46",
+        "H49"
+      ]
+    },
+    "I46": {
+      "value": 0.0,
+      "formula": "(G46+E46)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "H43",
+      "precedents": [
+        "E46",
+        "G46"
+      ],
+      "direct_dependents": [
+        "K46",
+        "I49"
+      ]
+    },
+    "J46": {
+      "value": 0.0,
+      "formula": "H46+H46*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "J43",
+      "precedents": [
+        "H46"
+      ],
+      "direct_dependents": [
+        "J49"
+      ]
+    },
+    "K46": {
+      "value": 0.0,
+      "formula": "I46+I46*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "J43",
+      "precedents": [
+        "I46"
+      ],
+      "direct_dependents": [
+        "K49"
+      ]
+    },
+    "H47": {
+      "value": 0.0,
+      "formula": "(F47+D47)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "H43",
+      "precedents": [
+        "D47",
+        "F47"
+      ],
+      "direct_dependents": [
+        "J47",
+        "H49"
+      ]
+    },
+    "I47": {
+      "value": 0.0,
+      "formula": "(G47+E47)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "H43",
+      "precedents": [
+        "E47",
+        "G47"
+      ],
+      "direct_dependents": [
+        "K47",
+        "I49"
+      ]
+    },
+    "J47": {
+      "value": 0.0,
+      "formula": "H47+H47*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "J43",
+      "precedents": [
+        "H47"
+      ],
+      "direct_dependents": [
+        "J49"
+      ]
+    },
+    "K47": {
+      "value": 0.0,
+      "formula": "I47+I47*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "J43",
+      "precedents": [
+        "I47"
+      ],
+      "direct_dependents": [
+        "K49"
+      ]
+    },
+    "H48": {
+      "value": 29.799999999999997,
+      "formula": "(F48+D48)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "H43",
+      "precedents": [
+        "D48",
+        "F48"
+      ],
+      "direct_dependents": [
+        "J48",
+        "H49"
+      ]
+    },
+    "I48": {
+      "value": 41.2,
+      "formula": "(G48+E48)*2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "9"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "H43",
+      "precedents": [
+        "E48",
+        "G48"
+      ],
+      "direct_dependents": [
+        "K48",
+        "I49"
+      ]
+    },
+    "J48": {
+      "value": 30.544999999999998,
+      "formula": "H48+H48*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "J43",
+      "precedents": [
+        "H48"
+      ],
+      "direct_dependents": [
+        "J49",
+        "F78"
+      ]
+    },
+    "K48": {
+      "value": 42.230000000000004,
+      "formula": "I48+I48*0.05/2",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "10"
+      },
+      "type": null,
+      "style": 0,
+      "shared_origin": "J43",
+      "precedents": [
+        "I48"
+      ],
+      "direct_dependents": [
+        "K49"
+      ]
+    },
+    "F50": {
+      "value": 9.500000000000002,
+      "formula": "23.1-D50",
+      "formula_attributes": {},
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "D50"
+      ],
+      "direct_dependents": [
+        "H50"
+      ]
+    },
+    "G50": {
+      "value": 7.5,
+      "formula": "17.3-E50",
+      "formula_attributes": {},
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "E50"
+      ],
+      "direct_dependents": [
+        "I50"
+      ]
+    },
+    "H50": {
+      "value": 46.2,
+      "formula": "(F50+D50)*2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "D50",
+        "F50"
+      ],
+      "direct_dependents": [
+        "J50"
+      ]
+    },
+    "I50": {
+      "value": 34.6,
+      "formula": "(G50+E50)*2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "E50",
+        "G50"
+      ],
+      "direct_dependents": [
+        "K50"
+      ]
+    },
+    "J50": {
+      "value": 47.355000000000004,
+      "formula": "H50+H50*0.05/2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "H50"
+      ],
+      "direct_dependents": [
+        "E94"
+      ]
+    },
+    "K50": {
+      "value": 35.465,
+      "formula": "I50+I50*0.05/2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 0,
+      "precedents": [
+        "I50"
+      ],
+      "direct_dependents": []
+    },
+    "E54": {
+      "value": 1597281500.0,
+      "formula": "IFERROR(AVERAGE(C54,D54),0)",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "C54",
+        "D54"
+      ],
+      "direct_dependents": [
+        "C21"
+      ]
+    },
+    "E55": {
+      "value": 0.0,
+      "formula": "IFERROR(AVERAGE(C55,D55),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "ref": "E55:E83",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "C55",
+        "D55"
+      ],
+      "direct_dependents": []
+    },
+    "E56": {
+      "value": 5139896000.0,
+      "formula": "IFERROR(AVERAGE(C56,D56),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C56",
+        "D56"
+      ],
+      "direct_dependents": []
+    },
+    "E57": {
+      "value": 518115500.0,
+      "formula": "IFERROR(AVERAGE(C57,D57),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C57",
+        "D57"
+      ],
+      "direct_dependents": []
+    },
+    "E58": {
+      "value": 5658011500.0,
+      "formula": "IFERROR(AVERAGE(C58,D58),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C58",
+        "D58"
+      ],
+      "direct_dependents": []
+    },
+    "E59": {
+      "value": 0.0,
+      "formula": "IFERROR(AVERAGE(C59,D59),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C59",
+        "D59"
+      ],
+      "direct_dependents": []
+    },
+    "E60": {
+      "value": 501216000.0,
+      "formula": "IFERROR(AVERAGE(C60,D60),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C60",
+        "D60"
+      ],
+      "direct_dependents": []
+    },
+    "E61": {
+      "value": 250911000.0,
+      "formula": "IFERROR(AVERAGE(C61,D61),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C61",
+        "D61"
+      ],
+      "direct_dependents": []
+    },
+    "E62": {
+      "value": 752127000.0,
+      "formula": "IFERROR(AVERAGE(C62,D62),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C62",
+        "D62"
+      ],
+      "direct_dependents": []
+    },
+    "F62": {
+      "value": 784330000.0,
+      "formula": "J42*1000000",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "J42"
+      ],
+      "direct_dependents": [
+        "F81"
+      ]
+    },
+    "E63": {
+      "value": 0.0,
+      "formula": "IFERROR(AVERAGE(C63,D63),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C63",
+        "D63"
+      ],
+      "direct_dependents": []
+    },
+    "E64": {
+      "value": 3537960000.0,
+      "formula": "IFERROR(AVERAGE(C64,D64),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C64",
+        "D64"
+      ],
+      "direct_dependents": []
+    },
+    "E65": {
+      "value": 0.0,
+      "formula": "IFERROR(AVERAGE(C65,D65),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C65",
+        "D65"
+      ],
+      "direct_dependents": []
+    },
+    "E66": {
+      "value": 5882656000.0,
+      "formula": "IFERROR(AVERAGE(C66,D66),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C66",
+        "D66"
+      ],
+      "direct_dependents": []
+    },
+    "E67": {
+      "value": 3457439500.0,
+      "formula": "IFERROR(AVERAGE(C67,D67),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C67",
+        "D67"
+      ],
+      "direct_dependents": []
+    },
+    "E68": {
+      "value": 33719000.0,
+      "formula": "IFERROR(AVERAGE(C68,D68),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C68",
+        "D68"
+      ],
+      "direct_dependents": []
+    },
+    "E69": {
+      "value": 9373814500.0,
+      "formula": "IFERROR(AVERAGE(C69,D69),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C69",
+        "D69"
+      ],
+      "direct_dependents": []
+    },
+    "E70": {
+      "value": 0.0,
+      "formula": "IFERROR(AVERAGE(C70,D70),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C70",
+        "D70"
+      ],
+      "direct_dependents": []
+    },
+    "E71": {
+      "value": 96635500.0,
+      "formula": "IFERROR(AVERAGE(C71,D71),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C71",
+        "D71"
+      ],
+      "direct_dependents": []
+    },
+    "E72": {
+      "value": 127753000.0,
+      "formula": "IFERROR(AVERAGE(C72,D72),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C72",
+        "D72"
+      ],
+      "direct_dependents": []
+    },
+    "E73": {
+      "value": -11103500.0,
+      "formula": "IFERROR(AVERAGE(C73,D73),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C73",
+        "D73"
+      ],
+      "direct_dependents": []
+    },
+    "E74": {
+      "value": 213285000.0,
+      "formula": "IFERROR(AVERAGE(C74,D74),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C74",
+        "D74"
+      ],
+      "direct_dependents": []
+    },
+    "F74": {
+      "value": 231240000.0,
+      "formula": "J45*1000000",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "J45"
+      ],
+      "direct_dependents": [
+        "F81"
+      ]
+    },
+    "E75": {
+      "value": 0.0,
+      "formula": "IFERROR(AVERAGE(C75,D75),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C75",
+        "D75"
+      ],
+      "direct_dependents": []
+    },
+    "E76": {
+      "value": 392413500.0,
+      "formula": "IFERROR(AVERAGE(C76,D76),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C76",
+        "D76"
+      ],
+      "direct_dependents": []
+    },
+    "E77": {
+      "value": 1031755500.0,
+      "formula": "IFERROR(AVERAGE(C77,D77),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C77",
+        "D77"
+      ],
+      "direct_dependents": []
+    },
+    "E78": {
+      "value": 28288500.0,
+      "formula": "IFERROR(AVERAGE(C78,D78),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C78",
+        "D78"
+      ],
+      "direct_dependents": []
+    },
+    "F78": {
+      "value": 30545000.0,
+      "formula": "J48*1000000",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "J48"
+      ],
+      "direct_dependents": [
+        "F81"
+      ]
+    },
+    "E79": {
+      "value": 0.0,
+      "formula": "IFERROR(AVERAGE(C79,D79),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C79",
+        "D79"
+      ],
+      "direct_dependents": []
+    },
+    "E80": {
+      "value": 16063081500.0,
+      "formula": "IFERROR(AVERAGE(C80,D80),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C80",
+        "D80"
+      ],
+      "direct_dependents": []
+    },
+    "E81": {
+      "value": 993700500.0,
+      "formula": "IFERROR(AVERAGE(C81,D81),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C81",
+        "D81"
+      ],
+      "direct_dependents": []
+    },
+    "E82": {
+      "value": -85244500.0,
+      "formula": "IFERROR(AVERAGE(C82,D82),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C82",
+        "D82"
+      ],
+      "direct_dependents": [
+        "F82"
+      ]
+    },
+    "E83": {
+      "value": 908456000.0,
+      "formula": "IFERROR(AVERAGE(C83,D83),0)",
+      "formula_attributes": {
+        "t": "shared",
+        "si": "11"
+      },
+      "type": null,
+      "style": 2,
+      "shared_origin": "E55",
+      "precedents": [
+        "C83",
+        "D83"
+      ],
+      "direct_dependents": []
+    },
+    "F84": {
+      "value": 438000000.0,
+      "formula": "219000000*2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "D18",
+        "F90"
+      ]
+    },
+    "F85": {
+      "value": 258000000.0,
+      "formula": "129000000*2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "D15",
+        "F90"
+      ]
+    },
+    "F86": {
+      "value": 106000000.0,
+      "formula": "53000000*2",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [],
+      "direct_dependents": []
+    },
+    "E94": {
+      "value": -47355000.00000001,
+      "formula": "J50*-1000000",
+      "formula_attributes": {},
+      "type": null,
+      "style": 2,
+      "precedents": [
+        "J50"
+      ],
+      "direct_dependents": [
+        "C27"
+      ]
+    },
+    "D95": {
+      "value": -52400000.00000001,
+      "formula": "(206.8-154.4)*-1000000",
+      "formula_attributes": {},
+      "type": null,
+      "style": 3,
+      "precedents": [],
+      "direct_dependents": [
+        "E95"
+      ]
+    }
+  },
+  "blocking_findings": [
+    "mixed target/period basis",
+    "E19 literal #REF! and stale L19:R19 caches",
+    "terminal eligibility omitted K9:R9",
+    "capex savings classified as EBITDA",
+    "commission conversion P&L absent",
+    "synergy and capital totals absent",
+    "acquisition price and IRR/NPV absent"
+  ]
+}

@@ -1,0 +1,42 @@
+.wf-root {
+  font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+  background-color: #f4f6fa;
+  color: #0f1c2e;
+  min-height: 100vh;
+}
+
+@layer base {
+  .wf-root h1,
+  .wf-root h2,
+  .wf-root h3,
+  .wf-root h4 {
+    font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+    margin: 0;
+  }
+
+  .wf-root p {
+    margin: 0;
+  }
+}
+
+.wf-root .font-mono {
+  font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.wf-root .tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.wf-root td,
+.wf-root th {
+  padding: 0.625rem 0.75rem !important;
+  vertical-align: middle !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wf-root * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

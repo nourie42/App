@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>what's up</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f6f1e8;
+        --fg: #1c1915;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #161410;
+          --fg: #f4eee4;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100dvh;
+        padding: 1.5rem;
+        background:
+          radial-gradient(circle at 50% 28%, color-mix(in srgb, var(--fg) 8%, transparent), transparent 42%),
+          var(--bg);
+        color: var(--fg);
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      }
+
+      main {
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.75rem, 10vw, 5.5rem);
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>what's up</h1>
+    </main>
+  </body>
+</html>
